@@ -1,9 +1,8 @@
 package project01;
 
+import java.io.IOException;
 
 public class ProjectMain {
-
-    private static String fileName;
 
     public static void main(String[] args) {
         ProjectMain execution = new ProjectMain();
@@ -11,25 +10,14 @@ public class ProjectMain {
             execution.start();
             // execution.print();
         } catch (Exception exceptionValue) {
-            System.out.println("Something bad happened.");
+            System.out.println("File not found.");
         }
     }
 
-    private void start() {
+    private void start() throws IOException {
         System.out.println("Starting the program...");
         ControlClass control = new ControlClass();
 
-        fileName = control.getFileName();
-
         control.classManager();
-
-    }
-
-    private void print() {
-        System.out.println(fileName);
-    }
-
-    public static String get() {
-        return fileName;
     }
 }
