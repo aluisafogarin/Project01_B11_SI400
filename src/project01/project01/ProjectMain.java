@@ -1,6 +1,8 @@
 package project01;
 
 import java.io.IOException;
+import java.util.Scanner;
+import org.w3c.dom.Text;
 
 public class ProjectMain {
 
@@ -14,10 +16,20 @@ public class ProjectMain {
         }
     }
 
+    public String getFileName() {
+        System.out.println("Insert file name:");
+        Scanner scanner = new Scanner(System.in);
+        String fileName = scanner.nextLine();
+        scanner.close();
+
+        String pathDirectory = System.getProperty("user.dir");
+        return pathDirectory + fileName;
+    }
+
     private void start() throws IOException {
         System.out.println("Starting the program...");
-        ControlClass control = new ControlClass();
 
-        control.classManager();
+        PreAnalyser preAnalyser = new PreAnalyser(this.getFileName());
+        preAnalyser.classManager();
     }
 }
