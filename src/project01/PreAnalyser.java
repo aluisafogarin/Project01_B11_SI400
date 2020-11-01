@@ -15,6 +15,7 @@ public class PreAnalyser {
         String rawText = TextManipulator.getContentFile(this.pathFile);
         String lowerText = TextManipulator.lowerCase(rawText);
         String preProcessedText = TextManipulator.removeCharacters(lowerText);
+        TextManipulator.textProcess(preProcessedText);
     }
 
     public void teste() {

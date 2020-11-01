@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.lang.String;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 /* import java.nio.file.Files;
 import java.nio.file.Path;
@@ -70,11 +71,22 @@ public class TextManipulator {
                 noSpecialCharacter = noSpecialCharacter + character;
             }                
         }
-        //System.out.println(noSpecialCharacter);
         return noSpecialCharacter;
     }
 
-    public void textProcess() {
+    public static void textProcess(String text) {
+        ArrayList<String> newList = new ArrayList<String>(Arrays.asList(text.split(" ")));
+        int i = 0;
+        String emptyString = " ";
+        for (String word : newList) {
+            System.out.println(word);
+            i = i + 1;
+            if (word.equals(emptyString)) {
+                newList.remove(i);
+                System.out.println(i);
+            }
+        }
 
+        System.out.println(newList);
     }
 }
