@@ -1,29 +1,31 @@
 package project01;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-import org.w3c.dom.Text;
 
 public class ProjectMain {
-
     public static void main(String[] args) {
-        ProjectMain execution = new ProjectMain();
+        ProjectMain execution = new ProjectMain(); 
         try {
             execution.start();
             // execution.print();
         } catch (Exception exceptionValue) {
-            System.out.println("File not found.");
+            System.out.println(exceptionValue);
         }
     }
 
+    /* Get current directory, separator based on OS and requests the file to the user */
     public String getFileName() {
+        String pathDirectory = System.getProperty("user.dir");
+        String separator = File.separator;
+
         System.out.println("Insert file name:");
         Scanner scanner = new Scanner(System.in);
         String fileName = scanner.nextLine();
         scanner.close();
-
-        String pathDirectory = System.getProperty("user.dir");
-        return pathDirectory + fileName;
+        
+        return pathDirectory + separator + fileName;
     }
 
     private void start() throws IOException {

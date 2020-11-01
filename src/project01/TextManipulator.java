@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.String;
 import java.io.IOException;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 /* import java.nio.file.Files;
@@ -16,54 +15,66 @@ import java.util.Map; */
 
 
 public class TextManipulator {
-    private static String rawText;
-    private static String clearText;
-    
+    private String rawText;
+    private String lowerText; 
+
+    /* Read input file */
     public static String getContentFile(String filePath) throws IOException {
 
         StringBuilder content = new StringBuilder();
         BufferedReader buffRead = new BufferedReader(new FileReader(filePath));
         String ls = System.getProperty("line.separator");
         String line = "";
-        
-        while( ( line = buffRead.readLine() ) != null ) {
+
+        while ((line = buffRead.readLine()) != null) {
             content.append(line);
             content.append(ls);
         }
 
+        content.append("\n");
         buffRead.close();
+
         return content.toString();
     }
 
-    public static void filterAscii(String filePath) throws IOException {
+    public static String lowerCase(String rawText) {
+        return rawText.toLowerCase();
+    }
     
-        BufferedReader obj = new BufferedReader(new FileReader(filePath));
-    
+    public static String removeCharacters(String lowerText) {
+        /*  Special caracteres not removed: -, $, % and Space */
+        int[] validCharacter= {45, 36, 37, 32};
+        int[] accentedVowels = {224, 225, 226, 227, // Accented A 
+                                232, 233, 234,      // Accented I
+                                236, 237, 238,      // Accented E
+                                242, 243, 244, 245, // Accented O                                
+                                249, 250, 251};     // Accented U
+        char[] arrayText = lowerText.toCharArray();
+        String noSpecialCharacter= "";
 
-        char[] seuArrayList = removeAccent(((String) obj.readLine())).toCharArray();
-        for (char caractere : seuArrayList ) {
-            //System.out.println((int)caractere);
-            if (((int) caractere == 45) || 
-                ((int) caractere >= 65 && (int) caractere <= 90) ||  
-                ((int) caractere >= 97 && (int) caractere <= 122)) {
-                System.out.println(caractere);
+        for (char character : arrayText) {
+
+            for (int num : validCharacter) {
+                if ((int) character == num)
+                    { noSpecialCharacter = noSpecialCharacter + character; };
             }
+
+            for (int num : accentedVowels) {
+                if ((int) character == num) 
+                    { noSpecialCharacter = noSpecialCharacter + character; };
+            }
+            
+            if (
+                ((int) character >= 48 && (int) character <= 57) ||     //Numbers
+                ((int) character >= 97 && (int) character <= 122)) {      //a until z            
+                noSpecialCharacter = noSpecialCharacter + character;
+            }                
         }
-        obj.close();
-        //System.out.println(seuArrayList);
-    }
-
-    public static String removeAccent(String text) {
-        return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
-        //System.out.println(clearText);
-    }
-
-    public void lowerCase() {
-
+        //System.out.println(noSpecialCharacter);
+        return noSpecialCharacter;
     }
 
     public void textProcess() {
 
     }
-
 }
