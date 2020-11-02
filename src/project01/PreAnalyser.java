@@ -1,13 +1,16 @@
 package project01;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 public class PreAnalyser {
     private final String pathFile;
+    private final String fileName;
 
-    public PreAnalyser(String pathFile) {
-        System.out.println("PATH" + pathFile);
-        this.pathFile = pathFile;
+    public PreAnalyser( String fileName) {
+        //System.out.println("PATH" + pathFile);
+        this.fileName = fileName;
+        this.pathFile = System.getProperty("user.dir") + File.separator + this.fileName;
     }
 
     protected void classManager() throws IOException {
@@ -16,7 +19,12 @@ public class PreAnalyser {
         String lowerText = TextManipulator.lowerCase(rawText);
         ArrayList<String> preProcessedText = TextManipulator.removeCharacters(lowerText);
 
-        ArrayList<String> keyValue = TextManipulator.textProcess(preProcessedText);
+        ArrayList<String> keyValues = TextManipulator.textProcess(preProcessedText);
+
+        OutputManager generateOutput = new OutputManager(this.fileName);
+        //OutputManager.recordOutputFile(keyValues);
+        //System.out.println(outPut.getOut());
+        //OutputManager.recordOutputFile(keyValues, this.fileName);
         
     }
 

@@ -17,15 +17,15 @@ public class ProjectMain {
 
     /* Get current directory, separator based on OS and requests the file to the user */
     public String getFileName() {
-        String pathDirectory = System.getProperty("user.dir");
-        String separator = File.separator;
+        //String pathDirectory = System.getProperty("user.dir");
+        //String separator = File.separator;
 
         System.out.println("Insert file name:");
         Scanner scanner = new Scanner(System.in);
         String fileName = scanner.nextLine();
         scanner.close();
-        
-        return pathDirectory + separator + fileName;
+        //String path = pathDirectory + separator + fileName;
+        return fileName;
     }
 
     private void start() throws IOException {

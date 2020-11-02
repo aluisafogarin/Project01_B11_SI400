@@ -1,12 +1,22 @@
 package project01;
 
-public class OutputManager {
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
-    private void orderMap() {
-        
+public class OutputManager {
+    private final String outPutFileName;
+
+    public OutputManager(String fileName) {
+        this.outPutFileName = fileName.substring(0, fileName.length() - 4) + ".csv";
     }
 
-    private void recordOutputFile() {
+    protected void recordOutputFile(ArrayList<String> data) throws IOException {
+    
+    }
 
+    public String outPutFileName() {
+        return this.outPutFileName;
     }
 }
