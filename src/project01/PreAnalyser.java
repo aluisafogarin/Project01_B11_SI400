@@ -21,8 +21,7 @@ public class PreAnalyser {
 
         ArrayList<String> keyValues = TextManipulator.textProcess(preProcessedText);
 
-        OutputManager generateOutput = new OutputManager(this.fileName);
-        //OutputManager.recordOutputFile(keyValues);
+        OutputManager.recordOutputFile(keyValues, pathFile);
         //System.out.println(outPut.getOut());
         //OutputManager.recordOutputFile(keyValues, this.fileName);
         
