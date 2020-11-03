@@ -6,12 +6,8 @@ import java.lang.String;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
@@ -61,7 +57,7 @@ public class TextManipulator {
                 if ((int) character == num) 
                     { noSpecialCharacter = noSpecialCharacter + character; };
             }
-            //if ((int) character == 32) { noSpecialCharacter = noSpecialCharacter + ",";};
+
             if (((int) character != 32) &&
                 ((int) character >= 48 && (int) character <= 57) ||     //Numbers
                 ((int) character >= 97 && (int) character <= 122)) {    //a until z            
@@ -134,7 +130,6 @@ public class TextManipulator {
         for (int i=0; i < keyWordsArray.size(); i++) {
             RelatedWords relateWords = new RelatedWords(keyWordsArray.get(i), cleanOutPut[i]);
             keyValue.add(i, relateWords.getLine());
-            //System.out.println("Key: " + obj.getKeys() + "- " + obj.getPairWords());
         }
         return keyValue;
     }

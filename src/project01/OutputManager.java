@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class OutputManager {
 
-    public static void recordOutputFile(ArrayList<String> data, String pathFile) throws FileNotFoundException {
+    public static boolean recordOutputFile(ArrayList<String> data, String pathFile) throws FileNotFoundException {
         String outPutFilePath = pathFile.substring(0, pathFile.length() - 4) + ".csv";
         System.out.println(outPutFilePath);
         PrintWriter writeFile = new PrintWriter(new File(outPutFilePath));
@@ -17,6 +17,8 @@ public class OutputManager {
             writeFile.println(line);
         }
         writeFile.close();
-        //JOptionPane.showMessageDialog(null, "Finished writing the file: ");
+        JOptionPane.showMessageDialog(null, "Output file recorded with success!");
+
+        return true;
     }
 }

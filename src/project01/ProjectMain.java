@@ -1,37 +1,48 @@
 package project01;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 public class ProjectMain {
     public static void main(String[] args) {
         ProjectMain execution = new ProjectMain(); 
         try {
             execution.start();
-            // execution.print();
-        } catch (Exception exceptionValue) {
-            System.out.println(exceptionValue);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "File not found!");
+            JOptionPane.showMessageDialog(null, "Shutting down the program...");
         }
     }
 
     /* Get current directory, separator based on OS and requests the file to the user */
     public String getFileName() {
-        //String pathDirectory = System.getProperty("user.dir");
-        //String separator = File.separator;
+        String fileName = JOptionPane.showInputDialog("Insert file name:");
 
-        System.out.println("Insert file name:");
-        Scanner scanner = new Scanner(System.in);
-        String fileName = scanner.nextLine();
-        scanner.close();
-        //String path = pathDirectory + separator + fileName;
+        if (!fileName.contains("txt")) {
+            fileName = fileName + ".txt";
+        }
+        System.out.println(fileName);
         return fileName;
     }
 
-    private void start() throws IOException {
-        System.out.println("Starting the program...");
+    public void start() throws IOException {
+        JOptionPane.showMessageDialog(null, "Starting the program...");
 
         PreAnalyser preAnalyser = new PreAnalyser(this.getFileName());
-        preAnalyser.classManager();
+        if (preAnalyser.classManager()) {
+            ProjectMain execution = new ProjectMain(); 
+            execution.finish();
+        } else {
+            JOptionPane.showMessageDialog(null, "Something happened during the process. Please, try again.");
+            ProjectMain execution = new ProjectMain(); 
+            execution.finish();
+        }
+    }
+
+    public void finish() {
+        JOptionPane.showMessageDialog(null, "Shutting down the program...");
     }
 }
