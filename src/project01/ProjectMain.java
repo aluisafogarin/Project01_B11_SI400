@@ -1,12 +1,21 @@
 package project01;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
-
 import javax.swing.JOptionPane;
+/** Main class of the project
+ * @author Group B11
+ * @author Ana Luísa Fogarin - 193948
+ * @author Vinicius Lourenço - 225314
+ * @author Larissa Correia - 219765
+ * @author Verussa de Alencar - 206453
+ */
 
 public class ProjectMain {
+
+/** Initial point of execution
+ * 
+ * @param args Arguments for main method.
+ */
     public static void main(String[] args) {
         ProjectMain execution = new ProjectMain(); 
         try {
@@ -17,7 +26,10 @@ public class ProjectMain {
         }
     }
 
-    /* Get current directory, separator based on OS and requests the file to the user */
+/**  Requests file name to the user.
+ * 
+ * @return The file name.
+ */
     public String getFileName() {
         String fileName = JOptionPane.showInputDialog("Insert file name:");
 
@@ -28,6 +40,10 @@ public class ProjectMain {
         return fileName;
     }
 
+/** Starts the program.
+ * 
+ * @throws IOException Exception control, in case it can't find the file.
+ */
     public void start() throws IOException {
         JOptionPane.showMessageDialog(null, "Starting the program...");
 
@@ -42,6 +58,9 @@ public class ProjectMain {
         }
     }
 
+/** Shuts down the program.
+ * 
+ */
     public void finish() {
         JOptionPane.showMessageDialog(null, "Shutting down the program...");
     }
