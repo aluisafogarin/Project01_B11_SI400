@@ -1,4 +1,4 @@
-package project01;
+package Project01;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -6,27 +6,30 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/** Class to manage the word and every word immediately after it. 
+/**
+ * Class to manage the word and every word immediately after it.
  * 
  */
 public class RelatedWords {
     private String key;
     private String pairWords;
 
-    /** Class contructor.
+    /**
+     * Class contructor.
      * 
-     * @param key Keyword. 
-     * @param cleanOutPut Words related to the key. 
+     * @param key         Keyword.
+     * @param cleanOutPut Words related to the key.
      */
     public RelatedWords(String key, String cleanOutPut) {
         this.key = key;
         this.pairWords = cleanOutPut.replaceAll(" ", ", ");
     }
 
-    /** Order the words.
+    /**
+     * Order the words.
      * 
-     * @param cleanOutPut Words related to the key. 
-     * @return Words ordered. 
+     * @param cleanOutPut Words related to the key.
+     * @return Words ordered.
      */
     public String orderPairWords(String cleanOutPut) {
         List<String> myList = new ArrayList<String>(Arrays.asList(this.pairWords.split(",")));
@@ -34,7 +37,8 @@ public class RelatedWords {
         return myList.toString();
     }
 
-    /** Get key word.
+    /**
+     * Get key word.
      * 
      * @return Key word.
      */
@@ -42,7 +46,8 @@ public class RelatedWords {
         return this.key;
     }
 
-    /** Get related words.
+    /**
+     * Get related words.
      * 
      * @return Related words.
      */
@@ -50,7 +55,8 @@ public class RelatedWords {
         return this.pairWords;
     }
 
-    /** Get both key and related words as one element.
+    /**
+     * Get both key and related words as one element.
      * 
      * @return Key and related words.
      */
