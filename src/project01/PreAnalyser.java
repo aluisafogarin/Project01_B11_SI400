@@ -15,7 +15,7 @@ public class PreAnalyser {
      * @param fileName File name inserted by the user.
      */
     public PreAnalyser(String fileName) {
-        this.fileName = fileName;
+        this.fileName = fileName; 
         this.pathFile = System.getProperty("user.dir") + File.separator + this.fileName;
     }
 
@@ -24,7 +24,7 @@ public class PreAnalyser {
      * @return To control success of recording the output file.
      * @throws IOException In case it can't read the input file.
      */
-    protected boolean classManager() throws IOException {
+    public boolean classManager() throws IOException {
 
         String rawText = TextManipulator.getContentFile(this.pathFile);
         String lowerText = TextManipulator.lowerCase(rawText);

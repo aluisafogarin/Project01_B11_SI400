@@ -70,7 +70,7 @@ public class TextManipulator {
      * @return Word without special characters.
      */
     public static String removeCharactersFromWords(String word) {
-        int[] validCharacter = {45, 36, 37}; // -, $, #
+        int[] validCharacter = {45, 36, 37, 231}; // -, $, #, ç
         int[] accentedVowels = {224, 225, 226, 227, // Accented A 
                                 232, 233, 234,      // Accented I
                                 236, 237, 238,      // Accented E

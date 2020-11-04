@@ -20,7 +20,7 @@ public class RelatedWords {
      */
     public RelatedWords(String key, String cleanOutPut) {
         this.key = key;
-        this.pairWords = cleanOutPut.replaceAll(" ", ",");
+        this.pairWords = cleanOutPut.replaceAll(" ", ", ");
     }
 
     /** Order the words.
@@ -56,6 +56,6 @@ public class RelatedWords {
      */
     public String getLine() {
         orderPairWords(this.pairWords);
-        return this.key + "," + this.pairWords;
+        return this.key + ", " + this.pairWords;
     }
 }

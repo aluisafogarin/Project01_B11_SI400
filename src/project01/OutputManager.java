@@ -15,7 +15,7 @@ public class OutputManager {
      * @param pathFile Path to input file.
      * @return Path to output file.
      */
-    public static String outputFilePath(String pathFile) {
+    public static String outputFilePath(String pathFile) { 
         return pathFile.substring(0, pathFile.length() - 4) + ".csv";
     }
 
